@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription - IJV</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: #0a1628;
+            font-family: Verdana, sans-serif;
+            color: white;
+            background-color: #0a1628;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: white;
+            background-image: url(inscription.ijv.jpg);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            .formulaire{
+                background-color: rgba(13,31,60,0.85)
+            }
+        
+        }
+
+        .header-form {
+            background-color: #091020;
+            text-align: center;
+            padding: 20px;
+            border-bottom: 3px solid #e8c55a;
+        }
+
+        .header-form h1 {
+            color: #e8c55a;
+            font-size: 28px;
+            letter-spacing: 3px;
+        }
+
+        .header-form p {
+            color: #aaa;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        .formulaire {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #0d1f3c;
+            padding: 40px;
+            border-radius: 10px;
+            border: 1px solid rgba(232,197,90,0.3);
+        }
+
+        .champ {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 25px;
+        }
+
+        label {
+            font-size: 13px;
+            letter-spacing: 1px;
+            color: #e8c55a;
+            text-transform: uppercase;
+        }
+
+        input, select {
+            padding: 12px 15px;
+            background-color: #0a1628;
+            border: 1px solid rgba(232,197,90,0.4);
+            border-radius: 5px;
+            color: white;
+            font-size: 15px;
+            font-family: Verdana, sans-serif;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus, select:focus {
+            border-color: #e8c55a;
+        }
+
+        select option {
+            background-color: #0a1628;
+        }
+
+        .btn-envoyer {
+            width: 100%;
+            padding: 15px;
+            background-color: #e8c55a;
+            color: #0a1628;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-envoyer:hover {
+            background-color: white;
+        }
+
+        .retour {
+            text-align: center;
+            margin-top: 20px;
+            padding-bottom: 40px;
+        }
+
+        .retour a {
+            color: #aaa;
+            font-size: 13px;
+            text-decoration: none;
+        }
+
+        .retour a:hover {
+            color: #e8c55a;
+        }
+
+        .success {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0,200,0,0.1);
+            border: 1px solid green;
+            border-radius: 5px;
+            color: lightgreen;
+            margin-top: 20px;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header-form">
+    <h1>IJV — INSCRIPTION</h1>
+    <p>Remplissez le formulaire ci-dessous pour vous inscrire</p>
+</div>
+
+<div class="formulaire">
+
+    <div class="champ">
+        <label>Nom & Prénom</label>
+        <input type="text" placeholder="Ex : Makita jephté" />
+    </div>
+
+    <div class="champ">
+        <label>Date de naissance</label>
+        <input type="date" />
+    </div>
+
+    <div class="champ">
+        <label>Filière choisie</label>
+        <select>
+            <option value="" disabled selected>Sélectionner une filière...</option>
+            <option>Réseaux Informatiques</option>
+            <option>Gestion Commerciale</option>
+            <option>Comptabilité</option>
+            <option>Secrétariat</option>
+            <option>Soins infirmiers</option>
+            <option>vente en pharmacie</option>
+            <option>laboratoire</option>
+            <option>Autre</option>
+        </select>
+    </div>
+
+    <div class="champ">
+        <label>Numéro de téléphone</label>
+        <input type="tel" placeholder="Ex : +242 06 000 0000" />
+    </div>
+
+    <div class="champ">
+        <label>Quartier</label>
+        <input type="text" placeholder="Ex : Moungali, Bacongo, Mfilou..." />
+    </div>
+
+    <div class="champ">
+        <label>Numéro des parents</label>
+        <input type="tel" placeholder="Ex : +242 06 000 0000" />
+    </div>
+
+    <div class="champ">
+        <label>Adresse Email</label>
+        <input type="email" placeholder="Ex : votre@email.com" />
+    </div>
+
+    <button class="btn-envoyer" onclick="envoyer()">
+        Envoyer ma candidature →
+    </button>
+
+    <div class="success" id="msg">
+        ✅ Votre inscription a été envoyée avec succès !<br>
+        Nous vous contacterons bientôt.
+    </div>
+
+</div>
+
+<div class="retour">
+    <a href="index.html">← Retour à l'accueil</a>
+</div>
+
+<script>
+    function envoyer() {
+
+    let nom = document.querySelectorAll('input')[0].value;
+    let naissance = document.querySelectorAll('input')[1].value;
+    let filiere = document.querySelector('select').value;
+    let telephone = document.querySelectorAll('input')[2].value;
+    let quartier = document.querySelectorAll('input')[3].value;
+    let parents = document.querySelectorAll('input')[4].value;
+    let email = document.querySelectorAll('input')[5].value;
+
+    if(!nom || !naissance || !filiere || !telephone || !quartier || !parents) {
+        alert("⚠️ Veuillez remplir tous les champs !");
+        return;
+    }
+
+    // 1 - Envoi WhatsApp
+    let message = 
+        "🎓 *NOUVELLE INSCRIPTION IJV* 🎓\n\n" +
+        "👤 *Nom & Prénom :* " + nom + "\n" +
+        "📅 *Date de naissance :* " + naissance + "\n" +
+        "📚 *Filière choisie :* " + filiere + "\n" +
+        "📞 *Téléphone :* " + telephone + "\n" +
+        "📍 *Quartier :* " + quartier + "\n" +
+        "👨‍👩‍👦 *N° Parents :* " + parents + "\n" +
+        "✉️ *Email :* " + email;
+
+    window.open("https://wa.me/242065411900?text=" + encodeURIComponent(message));
+
+    // 2 - Fiche imprimable
+    let date = new Date().toLocaleDateString('fr-FR');
+    let fiche = window.open('', '_blank');
+    fiche.document.write(`
+        <!DOCTYPE html>
+        <html lang="fr">
+        <head>
+            <meta charset="UTF-8">
+            <title>Fiche Inscription IJV </title>
+            <style>
+                body {
+                    font-family: 'Times New Roman', serif;
+                    padding: 40px;
+                    color: #000;
+                    background: white;
+                }
+                .entete {
+                    text-align: center;
+                    border-bottom: 3px double #000;
+                    padding-bottom: 15px;
+                    margin-bottom: 30px;
+                }
+                .entete h1 {
+                    font-size: 22px;
+                    letter-spacing: 3px;
+                    margin-bottom: 5px;
+                }
+                .entete h2 {
+                    font-size: 13px;
+                    font-weight: normal;
+                    letter-spacing: 1px;
+                }
+                .entete h3 {
+                    font-size: 16px;
+                    margin-top: 15px;
+                    text-decoration: underline;
+                    letter-spacing: 2px;
+                }
+                .numero {
+                    text-align: right;
+                    font-size: 12px;
+                    margin-bottom: 20px;
+                    color: #555;
+                }
+                .champ {
+                    display: flex;
+                    margin-bottom: 18px;
+                    align-items: center;
+                    border-bottom: 1px solid #ccc;
+                    padding-bottom: 8px;
+                }
+                .champ label {
+                    width: 200px;
+                    font-weight: bold;
+                    font-size: 14px;
+                }
+                .champ span {
+                    font-size: 14px;
+                    flex: 1;
+                }
+                .footer {
+                    margin-top: 60px;
+                    display: flex;
+                    justify-content: space-between;
+                }
+                .signature {
+                    text-align: center;
+                    font-size: 13px;
+                }
+                .signature div {
+                    margin-top: 50px;
+                    border-top: 1px solid #000;
+                    padding-top: 5px;
+                    width: 150px;
+                }
+                .btn-print {
+                    display: block;
+                    margin: 30px auto;
+                    padding: 12px 30px;
+                    background: #000;
+                    color: white;
+                    border: none;
+                    font-size: 15px;
+                    cursor: pointer;
+                    letter-spacing: 1px;
+                }
+                @media print {
+                    .btn-print { display: none; }
+                }
+            </style>
+        </head>
+        <body>
+
+        <div class="entete">
+            <h1>I J V</h1>
+            <h2>INSTITUT DES JEUNES VISIONNAIRES</h2>
+            <h3>FICHE D'INSCRIPTION</h3>
+        </div>
+
+        <div class="numero">
+            Date d'inscription : <strong>${date}</strong>
+        </div>
+
+        <div class="champ">
+            <label>Nom & Prénom :</label>
+            <span>${nom}</span>
+        </div>
+        <div class="champ">
+            <label>Date de naissance :</label>
+            <span>${naissance}</span>
+        </div>
+        <div class="champ">
+            <label>Filière choisie :</label>
+            <span>${filiere}</span>
+        </div>
+        <div class="champ">
+            <label>Numéro de téléphone :</label>
+            <span>${telephone}</span>
+        </div>
+        <div class="champ">
+            <label>Quartier :</label>
+            <span>${quartier}</span>
+        </div>
+        <div class="champ">
+            <label>Numéro des parents :</label>
+            <span>${parents}</span>
+        </div>
+        <div class="champ">
+            <label>Email :</label>
+            <span>${email || 'Non renseigné'}</span>
+        </div>
+
+        <div class="footer">
+            <div class="signature">
+                <div>Signature de l'étudiant(e)</div>
+            </div>
+            <div class="signature">
+                <div>Cachet de l'école</div>
+            </div>
+        </div>
+
+        <button class="btn-print" onclick="window.print()">
+            🖨️ Imprimer la fiche
+        </button>
+
+        </body>
+        </html>
+    `);
+    fiche.document.close();
+}
+</script>
+
+
+
+</body>
+</html>
